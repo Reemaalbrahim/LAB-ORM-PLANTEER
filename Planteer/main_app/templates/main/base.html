@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>{% block title %}Planteer{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <nav>
+                <a href="{% url 'main_app:home_view' %}">
+                    <h1>Planteer</h1>
+                </a>
+            </nav>
+            
+            <nav>
+                <a href="{% url 'plants_app:all_plants_view' %}">All Plants</a>
+                <a href="{% url 'main_app:contact_view' %}">Contact Us</a>
+                <a href="{% url 'plants_app:new_plants_view' %}">Add Plants</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Planteer</p>
+    </footer>
+</body>
+</html>
