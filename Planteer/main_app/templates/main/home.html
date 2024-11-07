@@ -3,23 +3,41 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="home-background">
-    <div class="welcome-text">
-        <h2>From the rarest blooms to everyday greens, explore plants like never before!</h2>
-    </div>
-    <div class="search-bar">
-        <input type="text" placeholder="Search for plants">
-        <nav>
+<div class="homepage">
+    <div class="home-background">
+        <div class="welcome-text">
+            <h2>From the rarest blooms to everyday greens, explore plants like never before!</h2>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search for plants">
             <a href="{% url 'plants_app:search_plants_view' %}">
                 <button>Search</button>
             </a>
-        </nav>
+        </div>
     </div>
-    <div class="featured-plants">
-        <h3>Plants</h3>
+    
+    <div class=" basic-background">
         
-    </div>
-</div>
+        <div class="featured-plants">
+            <h2>Featured Plants</h2>
+            <div class="plant-grid">  
+                {% for plant in plants|slice:":4" %} 
+                <div class="plant-card">
+                    <img src="{{ plant.image.url }}" class="plant-image" alt="{{ plant.name }}"/> 
+                    <div class="plant-info">
+                        <h3>{{ plant.name }}</h3>
+                        <h5>{{ plant.category }}</h5>
+                        <a href="{% url 'plants_app:plants_detail_view' plant.id %}" class="btn">View Details</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>  
+            <a href="{% url 'plants_app:all_plants_view' %}" class="btn explore-more">Explore More</a>
+        </div>
 {% endblock %}
 
 
+
+ 
+    

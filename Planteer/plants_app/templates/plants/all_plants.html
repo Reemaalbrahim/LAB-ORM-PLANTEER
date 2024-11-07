@@ -4,6 +4,23 @@
 
 {% block content %}
 <div class="basic-background">
+    <div class="all-plants">
+        <h2>All Plants</h2>
+        <ul>
+            {% for plant in plants %}
+            <li>
+                <h3>{{ plant.name }}</h3>
+                <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+                <p>{{ plant.about }}</p>
+                <p>Used for: {{ plant.used_for }}</p>
+                <p>Category: {{ plant.category }}</p>
+                <p>Edible: {{ plant.is_edible|yesno:"Yes,No" }}</p>
+                <a href="{% url 'plants_app:plants_detail_view' plant.id %}">View Details</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 
 </div>
 

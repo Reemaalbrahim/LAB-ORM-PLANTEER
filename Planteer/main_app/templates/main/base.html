@@ -15,7 +15,6 @@
                     <h1>Planteer</h1>
                 </a>
             </nav>
-            
             <nav>
                 <a href="{% url 'plants_app:all_plants_view' %}">All Plants</a>
                 <a href="{% url 'main_app:contact_view' %}">Contact Us</a>
@@ -24,7 +23,7 @@
         </div>
     </header>
 
-    <main>
+    <main >
         {% block content %}
         {% endblock %}
     </main>

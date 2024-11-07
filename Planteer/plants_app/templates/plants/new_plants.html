@@ -4,8 +4,39 @@
 
 {% block content %}
 <div class="basic-background">
+    <div class="new-plant-form">
+        <h2>Add a New Plant</h2>
+        <form action="{% url 'plants_app:new_plants_view'%}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Plant Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="about">About:</label>
+            <textarea id="about" name="about" required></textarea>
+    
+            <label for="used_for">Used For:</label>
+            <textarea id="used_for" name="used_for" required></textarea>
+    
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+    
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="Flowers">Flowers</option>
+                <option value="Trees">Trees</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+            </select>
+    
+            <label for="is_edible">Is Edible:</label>
+            <input type="checkbox" id="is_edible" name="is_edible">
+    
+            <button type="submit">Add Plant</button>
+        </form>
+    </div>
 
 </div>
 
 
 {% endblock %}
+

@@ -12,7 +12,7 @@ class Plants(models.Model):
     name= models.CharField(max_length=255)
     about  = models.TextField()
     used_for = models.TextField()
-    image = models.ImageField(upload_to="images/", default="images/default.png")
+    image = models.ImageField(upload_to="images/", default="images/default.jpg")
     category = models.CharField(max_length=20, choices=Category.choices, default=Category.TREES)
     is_edible = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,6 +22,9 @@ class Plants(models.Model):
 
 def __str__(self):
     return self.name 
+
+
+
      
      
     
