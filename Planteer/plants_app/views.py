@@ -7,8 +7,11 @@ def all_plants_view(request:HttpRequest):
     plants = Plants.objects.all()
     return render(request, 'plants/all_plants.html', {'plants': plants})
 
-def plants_detail_view(request:HttpRequest):
-    return render(request, 'plants/plants_detail.html')
+def plants_detail_view(request:HttpRequest, plant_id:int):
+    
+    plant= Plants.objects.get(pk=plant_id)
+    return render(request, 'plants/plants_detail.html', {"plant":plant})
+
 
 def new_plants_view(request:HttpRequest):
     if request.method == "POST":
@@ -31,11 +34,27 @@ def new_plants_view(request:HttpRequest):
     return render(request, 'plants/new_plants.html')  
 
 
-def update_plants_view(request:HttpRequest):
-    return render(request, 'plants/update_plants.html')
+def update_plants_view(request:HttpRequest, plant_id=int):
+    plant= Plants.objects.get(pk=plant_id)
 
-def delete_plants_view(request:HttpRequest):
-    return render(request, 'plants/delete_plants.html')
+    if request.method=="Post":
+        plant.name=request.POST["name"]
+        plant.used_for=request.POST["used_for"]
+        plant.category=request.POST["category"]
+        plant.is_edible=request.POST["is_edible"]
+        if"image" in request.FILES:plant.image= request.FILES["image"]
+        plant.save()
+
+        return redirect("plants_app:plants_detail_view", plant_id=plant.id)
+    return render(request, 'plants/update_plants.html', {"plant":plant} )
+
+
+def delete_plants_view(request:HttpRequest, plant_id=int):
+
+    plant= Plants.objects.get(pk=plant_id)
+    plant.delete()
+
+    return redirect("main_app:home_view", plant_id=plant.id)
 
 def search_plants_view(request:HttpRequest):
     return render(request, 'plants/search_plants.html')

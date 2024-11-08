@@ -5,7 +5,23 @@
 {% block content %}
 <div class="basic-background">
 
+    <h1 class="plant-name-d">{{ plant.name }}</h1>
+
+    <div class="row justify-content-center"> <!-- Center the content -->
+        <div class="col text-center"> <!-- Center text in the column -->
+
+            <img src="{{ plant.image.url }}" class="plant-image-d " alt="{{ plant.name }}" /> 
+            <p>{{ plant.about }}</p>
+            <h4>Category: {{ plant.category }}</h4>
+            <h4>Used for: {{ plant.used_for }}</h4>
+            <h4>Is Edible:{{ plant.is_edible }}</h4>
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'plants_app:update_plants_view' plant.id%}" class="btn btn-primary">Update</a>
+                <a href="{% url 'plants_app:delete_plants_view' plant.id%}" class="btn btn-danger">Delete</a>
+            </div>
+            
+        </div>
+    </div> 
+
 </div>
-
-
 {% endblock %}

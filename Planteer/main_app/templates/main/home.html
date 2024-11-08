@@ -28,12 +28,12 @@
                     <div class="plant-info">
                         <h3>{{ plant.name }}</h3>
                         <h5>{{ plant.category }}</h5>
-                        <a href="{% url 'plants_app:plants_detail_view' plant.id %}" class="btn">View Details</a>
+                        <a href="{% url 'plants_app:plants_detail_view' plant.id %}" class="btn">More about {{ plant.name }}</a>
                     </div>
                 </div>
                 {% endfor %}
             </div>  
-            <a href="{% url 'plants_app:all_plants_view' %}" class="btn explore-more">Explore More</a>
+            <a href="{% url 'plants_app:all_plants_view' %}" class="btn explore-more"><button>Explore more </button></a>
         </div>
 {% endblock %}
 

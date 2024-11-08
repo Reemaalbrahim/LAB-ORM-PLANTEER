@@ -107,6 +107,11 @@ nav a {
     margin: 0; /* Set margin to 0 to minimize spacing */
 }
 
+
+.plant-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
 .plant-image {
     width: 100%; 
     height: 200px; /* Fixed height for images */
@@ -117,10 +122,14 @@ nav a {
     padding: 10px; /* Space inside the card */
 }
 
-.explore-more {
+.explore-more button{
+    background-color: #656e60;
+    color: #fff;
     display: block; 
     margin: 20px auto; /* Center the button */
     text-align: center; /* Center text in button */
+    
+    
 }
 
 
@@ -143,4 +152,106 @@ img {
     nav {
         display: block;
     }
+}
+
+
+.plant-name-d {
+    text-align: center; /* Center the plant name */
+    margin-bottom: 20px; /* Space below the name */
+}
+
+.plant-image-d {
+    width: 4002px; /* Set a smaller width for the image */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area without distortion */
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.row {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+}
+
+.col {
+    text-align: center; /* Center text in the column */
+}
+.contact-background {
+    background-image: url('/static/images/contact_plant.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-welcome-text {
+    color: rgb(6, 6, 6);
+    background-color: rgba(229, 238, 230, 0.8);
+    font-size: 25px;
+    text-align: center;
+    margin: 100px 0 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+label, input, textarea, button {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+button {
+    width: auto;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-header h3 {
+    margin: 0;
+}
+
+.message-header p {
+    margin: 0;
+    color: #666;
+}
+
+.message-content p {
+    margin: 0;
 }

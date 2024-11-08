@@ -4,8 +4,46 @@
 
 {% block content %}
 <div class="basic-background">
+    <div class="new-plant-form">
+        <h2>Update {{plant.name}}</h2>
+        <form action="{% url 'plants_app:update_plants_view' plant.id%}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Plant Name:</label>
+            <input type="text" id="name" name="name" value="{{plant.name}}">
+    
+            <label for="about">About:</label>
+            <textarea id="about" name="about">{{plant.about}}</textarea>
+    
+            <label for="used_for">Used For:</label>
+            <textarea id="used_for" name="used_for">{{plant.used_for}}</textarea>
+
+            <div class="row">
+                <div class="col-3">
+                    <img src="{{plant.image.url}}" height="100px" width="100px" />
+                </div>
+            </div>
+    
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*"  value="{{plant.image}}">
+    
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="Flowers">Flowers</option>
+                <option value="Trees">Trees</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+            </select>
+    
+            <label for="is_edible">Is Edible:</label>
+            <input type="checkbox" id="is_edible" name="is_edible" value="{{plant.is_edible}}">
+    
+            <button type="submit">Update Plant</button>
+
+        </form>
+    </div>
 
 </div>
 
 
 {% endblock %}
+
