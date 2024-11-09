@@ -1,11 +1,31 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %}Search for plants{% endblock %}
+{% block title %}Search Plants{% endblock %}
 
 {% block content %}
 <div class="basic-background">
-
+    <div class="featured-plants">
+        <h2>Search Results</h2>
+        {% if search_query %}
+            <p>Showing results for: "{{ search_query }}"</p>
+        {% endif %}
+        <div class="plant-grid">
+            {% if plants %}
+                {% for plant in plants %}
+                <div class="plant-card">
+                    <img src="{{ plant.image.url }}" class="plant-image" alt="{{ plant.name }}"/>
+                    <div class="plant-info">
+                        <h3>{{ plant.name }}</h3>
+                        <h5>{{ plant.category }}</h5>
+                        <a href="{% url 'plants_app:plants_detail_view' plant.id %}" class="btn">More about {{ plant.name }}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No plants found matching your search.</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
-
-
 {% endblock %}
+

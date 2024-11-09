@@ -56,8 +56,19 @@ def delete_plants_view(request:HttpRequest, plant_id=int):
 
     return redirect("main_app:home_view", plant_id=plant.id)
 
+
 def search_plants_view(request:HttpRequest):
-    return render(request, 'plants/search_plants.html')
+    search_query = request.GET.get('search_query')
+    if search_query:
+        plants = Plants.objects.filter(name__contains=search_query)
+    else:
+        plants = None
+
+    context = {
+        'plants': plants,
+        'search_query': search_query
+    }
+    return render(request, 'plants/search_plants.html', context)
 
 
 
