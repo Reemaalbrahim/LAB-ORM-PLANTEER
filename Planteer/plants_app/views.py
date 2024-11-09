@@ -30,6 +30,7 @@ def new_plants_view(request:HttpRequest):
             category=category,
             is_edible=is_edible
         )
+        new_plant.save()
         return redirect('main_app:home_view') 
     return render(request, 'plants/new_plants.html')  
 
